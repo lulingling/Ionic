@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="starter">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale=1">
+    <title>Checkbox</title>
+    <link href="../media/css/ionic.css" rel="stylesheet" type="text/css">
+    <script src="../media/js/ionic.bundle.js"></script>
+    <script>
+        angular.module("starter", ["ionic"])
+                .controller("defaultCtrl", [
+                    "$scope",
+                    "$timeout",
+                    "$ionicBackdrop",
+                    function ($scope, $timeout, $ionicBackdrop) {
+                        $scope.action = function () {
+                            $ionicBackdrop.retain();
+                            $timeout(function () {
+                                $ionicBackdrop.release();
+                            }, 10000);
+                        }
+                    }
+                ]);
+
+        /*angular.module("starter", ["ionic"])
+         .controller("defaultCtrl", function ($scope, $timeout, $ionicBackdrop) {
+         $scope.action = function () {
+         $ionicBackdrop.retain();
+         $timeout(function () {
+         $ionicBackdrop.release();
+         }, 10000);
+         }
+         })*/
+    </script>
+    <style>
+        .backdrop {
+            background: rgba(144, 238, 144, .3);
+        }
+    </style>
+</head>
+<body ng-controller="defaultCtrl">
+
+<ion-pane>
+    <ion-content>
+        <h2 ng-click="action()">$ionicBackdrop</h2>
+    </ion-content>
+</ion-pane>
+
+</body>
+</html>
